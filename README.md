@@ -88,6 +88,19 @@ The `compile()` method always returns an object, which can contain `errors`, `so
 
 Starting from version 0.4.11 there is a new entry point named `compileStandardWrapper()` which supports Solidity's [standard JSON input and output](https://solidity.readthedocs.io/en/develop/using-the-compiler.html#compiler-input-and-output-json-description). It also maps old compiler output to it.
 
+#### From version 0.4.14
+
+Starting from version 0.4.14 a *standard JSON input and output* is also accepted by `compile()`:
+
+```javascript
+function findImports(path) {
+	/* Implement support for loading external files here */
+	return { error: 'File not found' }
+}
+var output = solc.compile({ /* standard JSON input */ }, findImports)
+/* output contains standard JSON output */
+```
+
 ### Using with Electron
 
 **Note:**

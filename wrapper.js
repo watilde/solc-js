@@ -64,6 +64,11 @@ function setupMethods (soljson) {
   }
 
   var compile = function (input, optimise, readCallback) {
+    if (typeof input !== 'string' && typeof input['language'] === 'string') {
+      // NOTE: take second argument as "readCallback"
+      return compileStandardWrapper(input, optimise);
+    }
+
     var result = '';
     if (readCallback !== undefined && compileJSONCallback !== null) {
       result = compileJSONCallback(JSON.stringify(input), optimise, readCallback);
