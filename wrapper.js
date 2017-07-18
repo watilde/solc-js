@@ -100,6 +100,10 @@ function setupMethods (soljson) {
       });
     }
 
+    if (readCallback !== null && typeof readCallback !== 'function') {
+      return formatFatalError('Invalid import callback supplied');
+    }
+
     input = JSON.parse(input);
 
     if (input['language'] !== 'Solidity') {
